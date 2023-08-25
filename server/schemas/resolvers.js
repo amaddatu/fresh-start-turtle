@@ -1,5 +1,8 @@
 const { Tech, Matchup, User } = require('../models');
 const auth = require('../utils/auth');
+const axios = require('axios');
+
+require('dotenv').config();
 
 const isLoggedIn = (context) => {
   if(context && context.hasOwnProperty('user') && context.user.hasOwnProperty('_id')){
@@ -36,6 +39,14 @@ const resolvers = {
       console.log(user);
       return user;
     },
+    searchMovie: async (parent, { movie }) => {
+      const response = await axios({
+        method: 'get',
+        url: `https://www.omdbapi.com/?apikey=${process.env.OMDB_API_KEY}&t=${movie}`
+      });
+      console.log(response.data);
+      return response.data;
+    }
   },
   Mutation: {
     createMatchup: async (parent, args) => {

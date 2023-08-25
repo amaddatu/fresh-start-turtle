@@ -20,17 +20,26 @@ const typeDefs = `
     tech1_votes: Int
     tech2_votes: Int
   }
+  
+  type Auth {
+    token: ID!
+    user: User
+  }
+
+  type Movie{
+    Title: String
+    Rated: String
+    Director: String
+    Year: String
+  }
+
 
   type Query {
     test: Message
     tech: [Tech]
     matchups(_id: String): [Matchup]
     me: User
-  }
-
-  type Auth {
-    token: ID!
-    user: User
+    searchMovie(movie: String!): Movie
   }
 
   type Mutation {
