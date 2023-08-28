@@ -1,8 +1,12 @@
 import { useState } from "react";
 import { MUTATION_LOGIN } from '../utils/mutations';
 import { useMutation } from "@apollo/client";
+import { useNavigate } from "react-router-dom";
+import { useLogin } from "../utils/LoginContext";
+import { LOGIN } from "../utils/actions";
 
 export default function LoginForm (props) {
+  const navigate = useNavigate();
   const [formState, setFormState ] = useState({
     email: '',
     password: ''
@@ -17,6 +21,8 @@ export default function LoginForm (props) {
   });
 
   const [login, { error }] = useMutation(MUTATION_LOGIN);
+
+  const [state, dispatch] = useLogin();
 
   const handleChange = (event) => {
     event.preventDefault();
@@ -44,10 +50,21 @@ export default function LoginForm (props) {
       });
 
       console.log(data);
+      const token = data?.login.token || '';
+      const user = data?.login.user || {};
       console.log(data?.login.token)
       console.log(data?.login.user);
       setShowSuccess(true);
-      setUserData(data?.login.user);
+      setUserData(user);
+
+      // save token
+      localStorage.setItem("user_token", token);
+      // update state
+      dispatch({type: LOGIN, payload: {
+        token: token,
+        user: user
+      }});
+      return navigate("/");
     }catch(err){
       console.error(err);
       setShowError(true);
