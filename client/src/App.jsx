@@ -50,6 +50,7 @@ function App() {
   const loggedIn = token.length > 0;
   // declared apollo provider here, so we cannot run queries in this App component
   // We create a LoginCheck component to do that work for us.
+  console.log(token);
 
   return (
     <ApolloProvider client={client}>

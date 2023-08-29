@@ -5,7 +5,7 @@ import { useLogin } from "../utils/LoginContext";
 export default function TopNav(props) {
   const [state] = useLogin();
   const location = useLocation();
-  console.log(location);
+  // console.log(location);
   const setCurrent = (current) => {
     location.pathname === current ? "page" : false;
   }

@@ -21,7 +21,7 @@ export default function Logout(){
 
     // // alternate version, use the redirect component below and comment out navigate("/");
     // setRedirectState(true);
-  }, []);
+  }, []); // empty array only runs when the component first loads
   return (
     <>
       {/* if you are using the imperative navigate hook, then you do not need redirectState or the Navigate component */}

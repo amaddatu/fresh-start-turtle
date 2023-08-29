@@ -3,3 +3,65 @@
   min-width: 100vw;
   min-height: 100vh;
 }
+
+.info-modal{
+  background: white;
+  min-width: 200px;
+  max-width: 90vw;
+  min-height: 100px;
+  max-height: 90vh;
+  padding: 30px;
+  border-radius: 20px;
+}
+
+.info-modal-overlay{
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(0,0,0,0.5);
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.close-box::after{
+  content: ' ';
+  width: 40px;
+  height: 3px;
+  display: block;
+  background: black;
+  position: relative;
+  bottom: 14px;
+  transform: rotate(0deg);
+  opacity: 0;
+  transition: 0.5s linear all;
+}
+
+.close-box::before{
+  content: ' ';
+  width: 40px;
+  height: 3px;
+  display: block;
+  background: black;
+  position: relative;
+  top: 14px;
+  transform: rotate(0deg);
+  opacity: 0;
+  transition: 0.5s linear all;
+}
+
+.close-box:hover::after{
+  opacity: 1;
+  transform: rotate(45deg);
+}
+
+.close-box:hover::before{
+  opacity: 1;
+  transform: rotate(-45deg);
+}
+.close-box:hover{
+  color: white;
+}

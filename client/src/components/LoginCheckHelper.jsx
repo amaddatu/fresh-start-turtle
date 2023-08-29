@@ -10,7 +10,7 @@ export default function LoginCheck(props) {
   useEffect( () => {
     if(props.login){  
       // same as localStorage.setItem('user_token', props.token);
-      Auth.setToken(props.token);
+      // Auth.setToken(props.token);
       // add missing data based on token loaded from localstorage
       dispatch({type: LOGIN, payload: {
         token: props.token,
@@ -18,11 +18,12 @@ export default function LoginCheck(props) {
       }});
     }
     else{
-      // removes invalid token
-      // same as localStorage.removeItem('user_token');
-      Auth.deleteToken();
-      // logout
-      dispatch({type: LOGOUT});
+      // // ****** BUGGED ******* Do nothing here!
+      // // removes invalid token
+      // // same as localStorage.removeItem('user_token');
+      // Auth.deleteToken();
+      // // logout
+      // dispatch({type: LOGOUT});
     }
   }, []);
   return (<></>);

@@ -4,6 +4,7 @@ import { useMutation } from "@apollo/client";
 import { useNavigate } from "react-router-dom";
 import { useLogin } from "../utils/LoginContext";
 import { LOGIN } from "../utils/actions";
+import Auth from "../utils/auth";
 
 export default function LoginForm (props) {
   const navigate = useNavigate();
@@ -58,7 +59,7 @@ export default function LoginForm (props) {
       setUserData(user);
 
       // save token
-      localStorage.setItem("user_token", token);
+      Auth.setToken(token);
       // update state
       dispatch({type: LOGIN, payload: {
         token: token,
