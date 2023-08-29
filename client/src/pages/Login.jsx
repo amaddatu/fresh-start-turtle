@@ -1,6 +1,6 @@
 import LoginForm from "../components/LoginForm";
 import TopNav from "../components/TopNav";
-import LoginCheck from "../components/LoginCheckHelper";
+import LoginCheck from "../components/LoginCheck";
 
 export default function Login(props){
   return (

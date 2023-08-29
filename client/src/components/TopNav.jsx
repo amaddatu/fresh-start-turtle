@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom";
 import { useLogin } from "../utils/LoginContext";
 
 export default function TopNav(props) {
-  const [state] = useLogin();
+  const {state} = useLogin();
   const location = useLocation();
   // console.log(location);
   const setCurrent = (current) => {

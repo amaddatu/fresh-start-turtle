@@ -20,7 +20,7 @@ export default function LoginProvider(props) {
   // const [state, setState] = useState('');
 
   return (
-    <LoginContext.Provider value={[state, dispatch]} {...props} >
+    <LoginContext.Provider value={{state, dispatch}} {...props} >
       {/* allow us to see children under the provider */}
       {props.children}
     </LoginContext.Provider>

@@ -23,7 +23,7 @@ export default function LoginForm (props) {
 
   const [login, { error }] = useMutation(MUTATION_LOGIN);
 
-  const [state, dispatch] = useLogin();
+  const {state, dispatch} = useLogin();
 
   const handleChange = (event) => {
     event.preventDefault();

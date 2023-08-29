@@ -1,11 +1,11 @@
 import TopNav from "../components/TopNav";
-import LoginCheck from "../components/LoginCheckHelper";
+import LoginCheck from "../components/LoginCheck";
 import { useLogin } from "../utils/LoginContext";
 import GameBoard from "../components/GameBoard";
 import { Navigate } from 'react-router-dom';
 export default function Game(props){
   // state is shared data
-  const [state, dispatch] = useLogin();
+  const {state, dispatch} = useLogin();
   console.log(state);
 
   return (

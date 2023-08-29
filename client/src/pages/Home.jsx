@@ -4,7 +4,7 @@ import LoginCheck from "../components/LoginCheck";
 import TopNav from "../components/TopNav";
 
 export default function Home(props){
-  const [state, dispatch] = useLogin();
+  const {state, dispatch} = useLogin();
 
   const userData = state.user || {message: "not logged in"};
 

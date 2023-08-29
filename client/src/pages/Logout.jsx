@@ -5,7 +5,7 @@ import { LOGOUT } from '../utils/actions';
 import { useNavigate, Navigate } from 'react-router-dom';
 export default function Logout(){
   const [redirectState, setRedirectState] = useState(false);
-  const [state, dispatch] = useLogin();
+  const {state, dispatch} = useLogin();
   const navigate = useNavigate();
   useEffect( () => {
     // deletes the token in storage
