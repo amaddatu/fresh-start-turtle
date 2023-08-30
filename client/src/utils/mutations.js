@@ -12,3 +12,21 @@ mutation Login($email: String!, $password: String!) {
   }
 }
 `;
+
+export const MUTATION_ADD_GAME = gql`
+mutation ADDGAME($game: GameHistoryInput) {
+  addGame(game: $game) {
+    _id
+    choice
+    createTime
+    mainNumber
+    numberChoices
+    userThatPlayed {
+      _id
+      email
+      name
+    }
+    win
+  }
+}
+`;

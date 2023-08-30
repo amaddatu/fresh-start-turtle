@@ -17,3 +17,20 @@ query Me {
   }
 }
 `
+export const QUERY_GAMES = gql`
+query GAMES {
+  games {
+    _id
+    choice
+    createTime
+    mainNumber
+    numberChoices
+    userThatPlayed {
+      _id
+      email
+      name
+    }
+    win
+  }
+}
+`;

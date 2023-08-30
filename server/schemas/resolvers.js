@@ -1,18 +1,15 @@
-const { Tech, Matchup, User } = require('../models');
+const { Tech, Matchup, User, GameHistory } = require('../models');
 const auth = require('../utils/auth');
 const axios = require('axios');
+const { Types } = require('mongoose');
+const { isLoggedIn } = require('./shared');
+const { gameResolvers } = require('./gameResolvers');
 
 require('dotenv').config();
 
-const isLoggedIn = (context) => {
-  if(context && context.hasOwnProperty('user') && context.user.hasOwnProperty('_id')){
-    return true;
-  }
-  return false;
-}
-
 const resolvers = {
   Query: {
+    ...gameResolvers.Query,
     test: async () => {
       return {
         message: "It's working! - Inna"
@@ -49,6 +46,7 @@ const resolvers = {
     }
   },
   Mutation: {
+    ...gameResolvers.Mutation,
     createMatchup: async (parent, args) => {
       const matchup = await Matchup.create(args);
       return matchup;

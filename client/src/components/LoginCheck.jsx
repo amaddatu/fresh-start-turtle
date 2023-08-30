@@ -10,6 +10,8 @@ export default function LoginCheck(props) {
   const { loading, data:loginData } = useQuery(QUERY_ME);
   // console.log({loading, loginData});
   
+  // simplify code to do all these checks in one file instead of only relying on App
+  // checks state, checks localstorage
   const token = state.token.length > 0 ? state.token : (Auth.getToken() || '');
   console.log("-----state-----");
   console.log(state);

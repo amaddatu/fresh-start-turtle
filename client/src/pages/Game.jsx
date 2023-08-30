@@ -19,7 +19,9 @@ export default function Game(props){
         </>
       ) : (
         // <Navigate to="/login" />
-        <></>
+        <>
+          Please log in
+        </>
       )}
 
     </>

@@ -33,6 +33,23 @@ const typeDefs = `
     Year: String
   }
 
+  type GameHistory {
+    _id: ID!
+    createTime: String
+    mainNumber: Int
+    numberChoices: [Int]
+    choice: Int
+    win: Boolean
+    userThatPlayed: User
+  }
+
+  input GameHistoryInput {
+    mainNumber: Int!
+    numberChoices: [Int]!
+    choice: Int!
+    win: Boolean!
+  }
+
 
   type Query {
     test: Message
@@ -40,6 +57,7 @@ const typeDefs = `
     matchups(_id: String): [Matchup]
     me: User
     searchMovie(movie: String!): Movie
+    games: [GameHistory]
   }
 
   type Mutation {
@@ -47,6 +65,8 @@ const typeDefs = `
     createVote(_id: String!, techNum: Int!): Matchup
     signUp(name: String!, email: String!, password: String!): Auth 
     login(email: String!, password: String!): Auth
+
+    addGame(game: GameHistoryInput): GameHistory
   }
 `;
 

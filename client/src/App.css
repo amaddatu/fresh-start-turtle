@@ -65,3 +65,9 @@
 .close-box:hover{
   color: white;
 }
+.card-body{
+  text-align: center;
+}
+.card.chosen{
+  background: red;
+}

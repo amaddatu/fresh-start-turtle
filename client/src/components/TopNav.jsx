@@ -28,11 +28,19 @@ export default function TopNav(props) {
                 aria-current={setCurrent("/game")} to="/game">Game</NavLink>
             </li>
             { state.loggedIn ? (
+              <>
+              
+              <li className="nav-item">
+              <NavLink 
+                className={isActive => "nav-link" + (isActive ? " active" : "")} 
+                aria-current={setCurrent("/game-history")} to="/game-history">Game History</NavLink>
+              </li>
               <li className="nav-item">
               <NavLink 
                 className={isActive => "nav-link" + (isActive ? " active" : "")} 
                 aria-current={setCurrent("/logout")} to="/logout">Logout</NavLink>
               </li>
+              </>
             ) : (
 
               <li className="nav-item">
