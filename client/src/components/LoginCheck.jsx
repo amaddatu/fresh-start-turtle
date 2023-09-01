@@ -7,25 +7,28 @@ import Auth from '../utils/auth';
 export default function LoginCheck(props) {
   const {state, dispatch} = useLogin();
 
-  const { loading, data:loginData } = useQuery(QUERY_ME);
+  const { loading, data:loginData } = useQuery(QUERY_ME, {
+    fetchPolicy: "no-cache" 
+  });
   // console.log({loading, loginData});
   
-  // simplify code to do all these checks in one file instead of only relying on App
-  // checks state, checks localstorage
-  const token = state.token.length > 0 ? state.token : (Auth.getToken() || '');
-  console.log("-----state-----");
-  console.log(state);
-  console.log("-----getToken-----");
-  console.log(Auth.getToken());
-  console.log("-----token-----");
-  console.log(token);
-  const loggedIn = token.length > 0;
 
-  const user = loginData?.me;
-  console.log({loginData});
 
   useEffect(() => {
     if(!loading){
+        // simplify code to do all these checks in one file instead of only relying on App
+        // checks state, checks localstorage
+        const token = state.token.length > 0 ? state.token : (Auth.getToken() || '');
+        console.log("-----state-----");
+        console.log(state);
+        console.log("-----getToken-----");
+        console.log(Auth.getToken());
+        console.log("-----token-----");
+        console.log(token);
+        const loggedIn = token.length > 0;
+
+        const user = loginData?.me;
+        console.log({loginData});
       console.log(state);
       if(loggedIn && dispatch){  
         // same as localStorage.setItem('user_token', props.token);

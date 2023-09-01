@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useLogin } from "../utils/LoginContext";
 import { LOGIN } from "../utils/actions";
 import Auth from "../utils/auth";
+import { QUERY_ME } from "../utils/queries";
 
 export default function LoginForm (props) {
   const navigate = useNavigate();
@@ -21,7 +22,9 @@ export default function LoginForm (props) {
     email: ''
   });
 
-  const [login, { error }] = useMutation(MUTATION_LOGIN);
+  const [login, { error }] = useMutation(MUTATION_LOGIN, {
+    fetchPolicy: "no-cache" 
+  });
 
   const {state, dispatch} = useLogin();
 
@@ -61,7 +64,7 @@ export default function LoginForm (props) {
       // save token
       Auth.setToken(token);
       // update state
-      dispatch({type: LOGIN, payload: {
+      await dispatch({type: LOGIN, payload: {
         token: token,
         user: user
       }});
