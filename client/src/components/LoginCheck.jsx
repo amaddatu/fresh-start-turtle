@@ -30,7 +30,7 @@ export default function LoginCheck(props) {
         const user = loginData?.me;
         console.log({loginData});
       console.log(state);
-      if(loggedIn && dispatch){  
+      if(loggedIn && dispatch && user){  
         // same as localStorage.setItem('user_token', props.token);
         Auth.setToken(token);
         // add missing data based on token loaded from localstorage
